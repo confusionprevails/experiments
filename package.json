@@ -9,7 +9,8 @@
   "license": "ISC",
   "dependencies": {
     "cloudant": "^1.1.0",
-    "lodash-node": "^3.9.3"
+    "lodash-node": "^3.9.3",
+    "pouchdb": "^3.6.0"
   },
   "devDependencies": {},
   "description": ""
