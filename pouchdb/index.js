@@ -1,14 +1,14 @@
 var PouchDB = require('pouchdb');
 
-var local_db = new PouchDB('test_local_3');
-var key="", secret="";
+var local_db = new PouchDB('test_local_4');
+var key="spectioniffornothemembro", secret="m5eAhrhuwachwGn4jyI5wTkk";
 var account="rajatkumar";
 var remoteDB="test_sync";
 var remoteURL='https://'+key+":"+secret+"@"+account+".cloudant.com/"+remoteDB;
 var remote_db = new PouchDB(remoteURL);
 
 var options = {
-    live:false, retry:true
+    live:true, retry:true
 };
 
 remote_db.info(function(err, info) {
@@ -19,7 +19,15 @@ remote_db.info(function(err, info) {
     }
 });
 
-var sync=PouchDB.sync(local_db, remote_db, options)
+local_db.info(function(err, info) {
+    if (err) {  console.log(err); }
+    else{
+        console.log("Connected");
+        console.log(info);
+    }
+});
+
+var sync=PouchDB.sync( remote_db,local_db, options)
     .on('change', handleChange)
     .on('paused', handlePause)
     .on('active', handleActive)
